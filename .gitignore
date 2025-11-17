@@ -1,0 +1,18 @@
+# Node modules (both)
+Backend/node_modules/
+Frontend/node_modules/
+
+# Dist folders
+Frontend/dist/
+Backend/dist/
+
+# System files
+.DS_Store
+
+# Logs
+logs
+*.log
+
+# Editor files
+.vscode/
+.idea/
