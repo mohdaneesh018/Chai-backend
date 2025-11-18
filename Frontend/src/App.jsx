@@ -1,22 +1,26 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import axios from "axios";
+import { Route, Routes } from 'react-router-dom';
+import AddBlog from './pages/AddBlog';
+import ViewBlog from './pages/ViewBlog';
+import SingleBlog from './pages/SingleBlog';
 
 function App() {
-  const [jokes, setJokes] = useState([]);      
+  const [jokes, setJokes] = useState([]);
 
   useEffect(() => {
-  axios.get("/api/jokes")
-    .then((res) => {
-      setJokes(res.data);
-    })
-    .catch((err) => console.log(err));
-}, []);
+    axios.get("/api/jokes")
+      .then((res) => {
+        setJokes(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
 
   return (
     <>
-      <h2>Chai And full Stack.</h2>
+      {/* <h2>Chai And full Stack.</h2>
       <p>Jokes: {jokes.length}</p>
 
       {
@@ -26,7 +30,13 @@ function App() {
             <p>{joke.content}</p>
           </div>
         ))
-      }
+      } */}
+
+      <Routes>
+        <Route path="/addblog" element={<AddBlog />} />
+        <Route path="/blogs" element={<ViewBlog />} />
+        <Route path="/blog/:id" element={<SingleBlog />} />
+      </Routes>
     </>
   )
 }
